@@ -1,3 +1,3 @@
 # SchulPortalPlus
 
-Adds cool new Features to the SchulPortal Hessen
+Makes helpful little changes and adds features to the SchulPortal Hessen

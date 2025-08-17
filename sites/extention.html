@@ -1,14 +1,201 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SchulPortal Plus</title>
+  <meta charset="UTF-8">
+  <title>Schulportal Plus</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+      background: #f2f4f7;
+      margin: 0;
+      padding: 0;
+      color: #1a1a1a;
+      transition: background .3s, color .3s;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #ffffff;
+      color: #1a1a1a;
+      padding: 16px 32px;
+      border-bottom: 1px solid #e0e0e0;
+      transition: background .3s, color .3s, border-color .3s;
+    }
+    header img {
+      width: 40px;
+      height: 40px;
+    }
+    header h1 {
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+    main {
+      padding: 40px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      margin-top: 40px;
+      margin-bottom: 16px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #333;
+      transition: color .3s;
+    }
+    .setting {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      padding: 20px 24px;
+      margin: 14px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: background .3s, box-shadow .3s;
+    }
+    .setting label {
+      font-size: 16px;
+      font-weight: 500;
+      color: #1a1a1a;
+      transition: color .3s;
+    }
+    .toggle {
+      width: 46px;
+      height: 24px;
+      position: relative;
+      display: inline-block;
+    }
+    .toggle input {
+      display: none;
+    }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: .3s;
+      border-radius: 24px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    input:checked + .slider {
+      background-color: #3b82f6;
+    }
+    input:checked + .slider:before {
+      transform: translateX(22px);
+    }
+    .input-field {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .input-field label {
+      margin-bottom: 4px;
+    }
+    .input-field input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #d1d5db;
+      font-size: 15px;
+      transition: border-color .2s, box-shadow .2s, background .3s, color .3s;
+    }
+    .input-field input:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.3);
+    }
+
+    /* Dark mode styles */
+    body.dark {
+      background: #1e1e1e;
+      color: #e5e7eb;
+    }
+    body.dark header {
+      background: #2d2d2d;
+      color: #f9fafb;
+      border-color: #444;
+    }
+    body.dark h2 {
+      color: #f3f4f6;
+    }
+    body.dark .setting {
+      background: #2d2d2d;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+    body.dark .setting label {
+      color: #f3f4f6;
+    }
+    body.dark .input-field input {
+      background: #3b3b3b;
+      border-color: #555;
+      color: #f3f4f6;
+    }
+  </style>
 </head>
 <body>
-    <img src="/images/icon.png" width="50px" style="margin: auto;">
-    
-    <h1>SchulPortal<b>+</b></h1>
-    <h3>v1.0 by Melonthedev</h3>
+  <header>
+    <img src="/images/icon.png" alt="Logo">
+    <h1>Schulportal Plus</h1>
+  </header>
+
+  <main>
+    <h2>General Settings</h2>
+    <div class="setting">
+      <label>Enable Dark Mode</label>
+      <label class="toggle">
+        <input type="checkbox" id="darkModeToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="setting">
+      <label>Auto Login</label>
+      <label class="toggle">
+        <input type="checkbox">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <h2>Account</h2>
+    <div class="setting input-field">
+      <label for="username">Username</label>
+      <input type="text" id="username" placeholder="Enter username">
+    </div>
+
+    <div class="setting input-field">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Enter password">
+    </div>
+
+    <h2>Other Options</h2>
+    <div class="setting">
+      <label>Show Notifications</label>
+      <label class="toggle">
+        <input type="checkbox">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="setting input-field">
+      <label for="customText">Custom Text</label>
+      <input type="text" id="customText" placeholder="Type something...">
+    </div>
+  </main>
 </body>
 </html>

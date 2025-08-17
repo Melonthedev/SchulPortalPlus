@@ -133,7 +133,7 @@ async function implementPersonalPlan(personalTable) {
             //console.log("Processing cell: row " + i + ", column" + j);
 
             var stunden = cell.querySelectorAll("div");
-            if (stunden.length === 0) continue; // Skip cells without divs
+            if (stunden == null || stunden.length === 0) continue; // Skip cells without divs
             Array.from(stunden).forEach(stunde => {
                 var teacher = stunde.querySelector("small");
                 var kurs = stunde.querySelector("b");
@@ -165,7 +165,7 @@ async function implementPersonalPlan(personalTable) {
             });
         }
     }
-    personalTable.innerHTML = spTable.querySelector("tbody").innerHTML;
+    personalTable.innerHTML = spTable.innerHTML;
 }
 
 async function fetchLerngruppen() {

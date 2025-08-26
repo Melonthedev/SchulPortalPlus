@@ -177,7 +177,7 @@ async function fetchLerngruppen() {
     for (let i = 1; i < lgTable.rows.length; i++) {
         const row = lgTable.rows[i];
         var lgName = row.cells[1].querySelector("small").innerText.trim().substring(1).split(" - ")[0];
-        var lgTeacher = row.cells[2].innerText.trim().split("(")[1].slice(0, -1);
+        var lgTeacher = row.cells[2].querySelector(".btn-group button").title.trim().split("(")[1].slice(0, -1);
         var lg = {
             name: lgName,
             teacher: lgTeacher
